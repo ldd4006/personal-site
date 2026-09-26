@@ -27,4 +27,19 @@ document.addEventListener('DOMContentLoaded', function(){
       applyLang(cur === 'zh' ? 'en' : 'zh');
     }
   });
+
+  /* 东八区时间（UTC+8），独立于访客时区 */
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function updateClock(){
+    var el = document.getElementById('clock');
+    if (!el) return;
+    var now = new Date();
+    var utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    var cn = new Date(utc + 8 * 3600000);
+    var s = cn.getFullYear() + '-' + pad(cn.getMonth()+1) + '-' + pad(cn.getDate())
+          + ' ' + pad(cn.getHours()) + ':' + pad(cn.getMinutes()) + ':' + pad(cn.getSeconds());
+    el.textContent = s;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
 });
