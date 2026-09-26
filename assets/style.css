@@ -51,7 +51,8 @@ header.site{
 header.site .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:13px 22px;}
 .brand{font-family:var(--serif);font-weight:700;letter-spacing:.02em;font-size:1.05rem;}
 .brand::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--accent);margin-right:9px;vertical-align:middle;}
-nav{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14.5px;margin-left:auto;}
+nav{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14.5px;margin-left:auto;
+  flex:1 1 auto;min-width:0;justify-content:flex-end;  /* 占满剩余空间，导航项靠右；窄屏时导航自身换行而非把按钮挤走 */}
 nav a{color:var(--muted);padding:3px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
 nav a:hover{color:var(--text);text-decoration:none;border-color:var(--accent);}
 
@@ -60,6 +61,7 @@ nav a:hover{color:var(--text);text-decoration:none;border-color:var(--accent);}
   -webkit-appearance:none;appearance:none;
   font-family:var(--sans);font-size:13px;line-height:1;letter-spacing:.02em;
   padding:6px 13px;
+  margin-left:auto;  /* 仅当按钮被挤到第二行独行时生效，使其靠右；同行时 nav 已 flex:1 吃掉剩余空间，无影响 */
   border:1px solid var(--border);border-radius:999px;
   background:transparent;color:var(--muted);
   cursor:pointer;
