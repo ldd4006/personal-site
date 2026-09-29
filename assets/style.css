@@ -211,3 +211,20 @@ footer .footer-copyright{white-space:nowrap;}
 footer .footer-note{font-size:.8rem;line-height:1.6;}
 footer .footer-clock{font-family:"SF Mono",Consolas,monospace;font-size:.78rem;color:var(--muted);white-space:nowrap;}
 footer .footer-note a{color:var(--accent);}
+
+/* 简历页打印：仅去 chrome，屏幕仍保留站点导航（作用域 body.cv-page） */
+@media print {
+  body.cv-page{
+    --bg:#fff; --text:#000; --muted:#444; --border:#ccc; --card:#fff; --accent:#356056;
+    background:#fff; color:#000;
+  }
+  body.cv-page header.site,
+  body.cv-page footer.site,
+  body.cv-page .lang-btn,
+  body.cv-page .no-print{ display:none !important; }
+  body.cv-page main{ padding:0; }
+  body.cv-page .wrap{ max-width:none; padding:0; }
+  body.cv-page .zh[hidden],
+  body.cv-page .en[hidden]{ display:none !important; }
+  @page{ margin:1.4cm; }
+}
